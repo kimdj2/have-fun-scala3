@@ -14,7 +14,7 @@ object UsingExample:
     assert(max("abcdefg", "hijklmn") == "hijklmn")
 
   def sum[T](list: List[T])(using ev: Monoid[T]) =
-    list.foldLeft(ev.unit){ case (x, y) => x add y }
+    list.foldLeft(ev.unit)(ev.add)
 
   @main def runSumExample: Unit =
     assert(sum(List(1, 2, 3, 4, 5)) == 15)
